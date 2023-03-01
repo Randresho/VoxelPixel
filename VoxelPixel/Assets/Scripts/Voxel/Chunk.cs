@@ -120,11 +120,6 @@ public class Chunk
 
                 AddTexture(world.blockTypes[blockID].getTextureID(p));
 
-                /*uvs.Add(VoxelData.voxelUvs[0]);
-                uvs.Add(VoxelData.voxelUvs[1]);
-                uvs.Add(VoxelData.voxelUvs[2]);
-                uvs.Add(VoxelData.voxelUvs[3]);*/
-
                 triangles.Add(vertexIdx);
                 triangles.Add(vertexIdx + 1);
                 triangles.Add(vertexIdx + 2);
@@ -133,16 +128,6 @@ public class Chunk
                 triangles.Add(vertexIdx + 3);
 
                 vertexIdx += 4;
-                /*for (int i = 0; i < 6; i++)
-                {
-                    triangleIdx = VoxelData.voxelTris[p, i];
-                    vertices.Add(VoxelData.voxelVerts[triangleIdx] + pos);
-
-                    uvs.Add(VoxelData.voxelUvs[i]);
-
-                    triangles.Add(vertexIdx);
-                    vertexIdx++;
-                }*/
             }
         }
     }
@@ -185,5 +170,15 @@ public class ChunkCoord
     {
         x = _x;
         z = _z;
+    }
+
+    public bool Equals(ChunkCoord other)
+    {
+        if (other == null)
+            return false;
+        else if (other.x == x && other.z == z) 
+            return true;
+        else
+            return false;
     }
 }

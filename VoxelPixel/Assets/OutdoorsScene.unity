@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2160.5166, g: 2264.5625, b: 3287.6016, a: 1}
+  m_IndirectSpecularColor: {r: 2172.2236, g: 2288.5156, b: 3355.7344, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -462,6 +462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7a6f89d17cb1d468f4f7867bbfd034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1823688467}
+  spawnPosition: {x: 0, y: 0, z: 0}
   material: {fileID: 2100000, guid: 7cb4230825b745447ab7421354035088, type: 2}
   blockTypes:
   - blockName: Air
@@ -898,7 +900,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823688464}
-  m_LocalRotation: {x: -0.089691326, y: 0.8950543, z: -0.20939139, w: -0.3833909}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.3420568, y: 4.439812, z: 5.5847883}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
