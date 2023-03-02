@@ -7,7 +7,7 @@ public static class VoxelData
     //Axis X
     public static readonly int ChunkWidth = 16;
     //Axis Y
-    public static readonly int ChunkHeight = 7;
+    public static readonly int ChunkHeight = 256;
     //Axis z
     public static readonly int ChunkFoward = 16;
     //

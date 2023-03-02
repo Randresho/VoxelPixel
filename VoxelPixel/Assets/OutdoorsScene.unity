@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2172.2236, g: 2288.5156, b: 3355.7344, a: 1}
+  m_IndirectSpecularColor: {r: 2171.9639, g: 2287.5, b: 3351.9727, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -462,6 +462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7a6f89d17cb1d468f4f7867bbfd034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seed: 2147483647
+  biomes: {fileID: 11400000, guid: 4685377a0d6d69e42afee30f90b5c994, type: 2}
   player: {fileID: 1823688467}
   spawnPosition: {x: 0, y: 0, z: 0}
   material: {fileID: 2100000, guid: 7cb4230825b745447ab7421354035088, type: 2}
@@ -498,6 +500,30 @@ MonoBehaviour:
     bottomFaceTexture: 1
     leftFaceTexture: 2
     rightFaceTexture: 2
+  - blockName: Sand
+    isSolid: 1
+    backFaceTexture: 10
+    frontFaceTexture: 10
+    topFaceTexture: 10
+    bottomFaceTexture: 10
+    leftFaceTexture: 10
+    rightFaceTexture: 10
+  - blockName: Dirt
+    isSolid: 1
+    backFaceTexture: 1
+    frontFaceTexture: 1
+    topFaceTexture: 1
+    bottomFaceTexture: 1
+    leftFaceTexture: 1
+    rightFaceTexture: 1
+  - blockName: Carbon
+    isSolid: 1
+    backFaceTexture: 3
+    frontFaceTexture: 3
+    topFaceTexture: 3
+    bottomFaceTexture: 3
+    leftFaceTexture: 3
+    rightFaceTexture: 3
 --- !u!4 &391660672
 Transform:
   m_ObjectHideFlags: 0

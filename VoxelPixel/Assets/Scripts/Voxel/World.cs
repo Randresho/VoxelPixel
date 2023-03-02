@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class World : MonoBehaviour
 {
+    public int seed;
+    public BiomeAttributes biomes;
+
+
     public Transform player;
     public Vector3 spawnPosition;
 
@@ -18,6 +22,8 @@ public class World : MonoBehaviour
 
     private void Awake()
     {
+        Random.InitState(seed);
+
         spawnPosition = new Vector3((VoxelData.worldSizeInChunks * VoxelData.ChunkWidth) / 2f, VoxelData.ChunkHeight + 2f, (VoxelData.worldSizeInChunks * VoxelData.ChunkWidth) / 2f);
         GenerateWorld();
         playerLastChunkCoord = GetChunkFromVector3(player.position);
@@ -88,14 +94,47 @@ public class World : MonoBehaviour
 
     public byte GetVoxel(Vector3 pos)
     {
+        int yPos = Mathf.FloorToInt(pos.y);
+
+        #region IMMUTUABLE PASS
+        //If outside world, return air
         if (!IsVoxelInWorld(pos))
             return 0;
-        if (pos.y < 1)
+
+        //If bottom block of chunk, return bedrock
+        if(yPos == 0)
             return 1;
-        else if (pos.y == VoxelData.ChunkHeight - 1)
-            return 3;
+        #endregion
+
+        #region Basic Terrain Pass
+        int terrainHeight = Mathf.FloorToInt(biomes.terrainHeight * Noise.Get2DPerlin(new Vector2(pos.x, pos.z), 0, biomes.terrainScale)) + biomes.solidGroundHeight;
+        int voxelValue = 0;
+
+        if (yPos == terrainHeight)
+            voxelValue = 3;
+        else if (yPos < terrainHeight && yPos > terrainHeight - 4)
+            voxelValue = 5;
+        else if (yPos > terrainHeight)
+            return 0;
         else
-            return 2;
+            voxelValue = 2;
+        #endregion
+
+        #region Second Pass
+        if (voxelValue == 2)
+        {
+            foreach (Lode lode in biomes.lodes)
+            {
+                if (yPos > lode.minHeight && yPos < lode.maxHeight)
+                {
+                    if (Noise.Get3DPerlin(pos, lode.noiseOffset, lode.scale, lode.threshold))
+                        voxelValue = lode.blockID;
+                }
+            }
+        }
+
+        return (byte)voxelValue;
+        #endregion
     }
 
     void CreateNewChunk(int x, int z)
